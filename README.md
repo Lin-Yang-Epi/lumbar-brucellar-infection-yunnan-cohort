@@ -33,4 +33,8 @@ Analyses were performed in R (version 4.4.1). Key packages: `rms`, `maxstat`, `c
 
 ## Citation
 
-If you use this code, please cite the associated manuscript (citation to be added upon publication).
+If you use this code, please cite it as:
+
+Lin Yang. Lumbar Brucellar Infection: Two-Center Retrospective Cohort Analysis (analysis code). Zenodo. https://doi.org/10.5281/zenodo.22903966
+
+The citation for the associated manuscript will be added here upon publication.
