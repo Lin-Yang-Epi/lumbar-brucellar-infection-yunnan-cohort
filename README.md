@@ -1,8 +1,8 @@
-# Lumbar Brucellar Infection: Dual-Center Retrospective Cohort Analysis
+# Lumbar Brucellar Infection: two-Center Retrospective Cohort Analysis
 
-Reproducible R analysis pipeline for a dual-center retrospective cohort study examining diagnostic delay and surgical intervention in patients with lumbar brucellar infection, conducted at two tertiary hospitals in Yunnan Province, China.
+Reproducible R analysis pipeline for a two-center retrospective cohort study examining diagnostic delay and surgical intervention in patients with lumbar brucellar infection, conducted at two tertiary hospitals in Yunnan Province, China.
 
-This repository accompanies a manuscript submitted to the *Journal of Evaluation in Clinical Practice*.
+This repository accompanies a manuscript describing this study.
 
 ## Data Availability
 
