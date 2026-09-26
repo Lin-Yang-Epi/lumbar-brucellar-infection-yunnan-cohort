@@ -1,4 +1,4 @@
-# Lumbar Brucellar Infection: two-Center Retrospective Cohort Analysis
+# Lumbar Brucellar Infection: Two-Center Retrospective Cohort Analysis
 
 Reproducible R analysis pipeline for a two-center retrospective cohort study examining diagnostic delay and surgical intervention in patients with lumbar brucellar infection, conducted at two tertiary hospitals in Yunnan Province, China.
 
@@ -14,9 +14,11 @@ Scripts are numbered in the order they should be run. Each script assumes the an
 
 | Script | Description |
 |---|---|
-| `01_finalize_dataset.R` | Standardizes hospital labels, completes structurally-missing values, and assigns standardized category labels. Overwrites the analytic dataset in place (a backup of the prior version is kept automatically). |
-| `02_Table1_and_Sankey.R` | Generates the baseline characteristics table, diagnostic method distribution, and the Sankey diagram of initial diagnosis to clinical outcome. |
+| `01_finalize_dataset.R` | Standardizes hospital labels, completes structurally-missing values (including one neurological-deficit entry verified against the source record), and assigns standardized category labels. Overwrites the analytic dataset in place (a backup of the prior version is kept automatically). |
+| `02_Table1_and_Sankey.R` | Generates the baseline characteristics table (including neurological deficit), diagnostic method distribution, and the Sankey diagram of initial diagnosis to clinical outcome. |
+| `Export_Table1_to_Excel.R` | Standalone helper that rebuilds Table 1 and exports it to Excel. |
 | `03_RCS_diagnostics_and_variable_recoding.R` | Restricted cubic spline (RCS) nonlinearity diagnosis for five continuous variables; cutpoint determination and bootstrap validation for diagnostic delay; recoding decisions for number of involved spinal segments and baseline temperature; CRP/ESR collinearity assessment; final multivariable logistic regression model. |
+| `Sensitivity_Neuro_Deficit.R` | Sensitivity analysis: the final multivariable model additionally adjusted for neurological deficit (Supplementary Table S10). Standalone; Wald 95% confidence intervals as in Table 3. |
 | `08_mediation_analysis.R` | Exploratory causal mediation analysis (initial misdiagnosis → diagnostic delay → surgical intervention), with sensitivity analysis for unmeasured confounding. Fully standalone — does not depend on objects from other scripts. |
 
 ## Methods Summary
@@ -25,6 +27,7 @@ Scripts are numbered in the order they should be run. Each script assumes the an
 - **Cutpoint determination**: Maximally selected rank statistics (`maxstat` package), validated with 1,000 bootstrap resamples.
 - **Covariate selection**: Events-per-variable (EPV) principle and prespecified clinical relevance; collinearity assessed via variance inflation factors (`car` package).
 - **Center effect**: Standardized mean differences (`tableone` package) to assess baseline balance between study centers; study center included as a covariate in the final model.
+- **Sensitivity analysis**: Final model additionally adjusted for neurological deficit, a documented surgical indication not included in the main model.
 - **Mediation analysis**: Causal mediation analysis based on the counterfactual framework (`mediation` package), with sensitivity analysis for unmeasured confounding.
 
 ## Software

@@ -48,6 +48,7 @@ df_clean <- df %>%
     Sex         = factor(Sex, levels = c(0, 1), labels = c("Female", "Male")),
     Exposure_Hx = factor(Exposure_Hx, levels = c(0, 1), labels = c("Unclear", "Definite")),
     Fever_status = factor(Fever_status, levels = c(0, 1), labels = c("No", "Yes")),
+    Neuro_Deficit    = factor(Neuro_Deficit, levels = c(0, 1), labels = c("No", "Yes")),
     Epidural_Abscess = factor(Epidural_Abscess, levels = c(0, 1), labels = c("No", "Yes")),
     Psoas_Abscess    = factor(Psoas_Abscess, levels = c(0, 1), labels = c("No", "Yes")),
     Misdiagnosis_Flow = factor(Misdiagnosis_Flow),
@@ -67,12 +68,13 @@ df_clean <- df %>%
 
 table1 <- df_clean %>%
   dplyr::select(Age, Sex, Exposure_Hx, Misdiagnosis_Flow, Delay_to_Dx, Fever_Baseline,
-         Fever_status, CRP_Base, ESR_Base, Lesion_Count, Epidural_Abscess,
+         Fever_status, CRP_Base, ESR_Base, Lesion_Count, Neuro_Deficit, Epidural_Abscess,
          Psoas_Abscess, End_Status) %>%
   tbl_summary(
     by = End_Status,
     type = list(
       Fever_status      ~ "categorical",
+      Neuro_Deficit     ~ "categorical",
       Epidural_Abscess  ~ "categorical",
       Psoas_Abscess     ~ "categorical"
     ),
@@ -91,6 +93,8 @@ table1 <- df_clean %>%
       Fever_status ~ "Fever Status",
       CRP_Base ~ "CRP (mg/L)",
       ESR_Base ~ "ESR (mm/h)",
+      Lesion_Count ~ "Number of Involved Spinal Segments",
+      Neuro_Deficit ~ "Neurological Deficit",
       Epidural_Abscess ~ "Epidural Abscess",
       Psoas_Abscess ~ "Psoas Abscess"
     ),

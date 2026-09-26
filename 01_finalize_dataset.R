@@ -44,6 +44,13 @@ if (any(dat$Hospital %in% c("Baoshan", "Zhaotong"))) {
 # not an unknown status, and are recoded to 0.
 dat$Epidural_Abscess[is.na(dat$Epidural_Abscess)] <- 0
 
+## ---- Neurological deficit: complete one blank entry ----
+# One blank entry was checked against the source medical record: the patient
+# had no neurological deficit, so it is recoded to 0. The check stops the
+# script if more than one blank is found.
+stopifnot(sum(is.na(dat$Neuro_Deficit)) <= 1)
+dat$Neuro_Deficit[is.na(dat$Neuro_Deficit)] <- 0
+
 ## ---- Initial misdiagnosis category: standardized English labels ----
 # The third category is relabeled from a generic "spinal infection suspected"
 # description (ambiguous with tuberculous or pyogenic spondylitis) to state
@@ -60,6 +67,7 @@ dat <- dat %>%
 ## ---- Verification ----
 table(dat$Hospital, useNA = "ifany")
 table(dat$Epidural_Abscess, useNA = "ifany")
+table(dat$Neuro_Deficit, useNA = "ifany")
 table(dat$Misdiagnosis_Flow, useNA = "ifany")
 
 ## ---- Overwrite the analytic dataset ----
