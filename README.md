@@ -11,6 +11,20 @@ Due to patient privacy protections and the terms of the institutional ethics app
 ## Repository Structure
 
 Scripts are numbered in the order they should be run. Each script assumes the analytic dataset is located at `02_clean_data/Analysis_Dataset_Imputed.xlsx` relative to the project root.
+## Data processing steps
+
+1. Data cleaning and merging (R).
+2. Imputation of missing baseline CRP (n = 10) and ESR (n = 9): `02_imputation.py`
+   (Python 3.13.15; scikit-learn IterativeImputer with random forest regressors,
+   max_iter = 30, random seed 42; a single completed dataset).
+3. After imputation, three values in the analysis dataset were corrected against
+   the medical records (number of involved spinal segments in two patients and
+   baseline temperature in one patient).
+4. All further analyses (tables, restricted cubic splines, logistic regression,
+   mediation and sensitivity analyses) were run in R 4.4.1.
+
+Patient-level data are not included in this repository because of privacy and
+ethical restrictions.
 
 | Script | Description |
 |---|---|
